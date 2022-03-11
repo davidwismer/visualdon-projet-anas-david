@@ -2,7 +2,7 @@
 --------------------------------------------------------------------
 Contexte
 
-
+Projet de visualisation de données autour du thème du football
 --------------------------------------------------------------------
 Description
 
