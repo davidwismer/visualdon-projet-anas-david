@@ -20,3 +20,9 @@ Le but de cette application est de créer une carte dynamique et ludique qui ren
 Références
 --------------------------------------------------------------------
 Ces données sont utilisées et générées par la Fifa ainsi que toutes les organisations de football. Ce sont des données utilisées de manière assez générale dans le monde du foot.
+
+
+Wireframes
+--------------------------------------------------------------------
+![Capture](https://user-images.githubusercontent.com/72078340/159027739-7c8b5eac-a1db-449e-94d7-7a8b5aab1839.PNG)
+![Capture](https://user-images.githubusercontent.com/72078340/159027934-8506b8dd-f618-4d85-ba26-eae80d6e51ea.PNG)
