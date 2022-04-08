@@ -1,0 +1,158 @@
+{
+    "WorldCups": [
+        {
+            "annee": "1930",
+            "hote": "Uruguay",
+            "podium": ["Uruguay", "Argentina", "USA"],
+            "participants": ["Argentina", "France", "Mexico", "Chile", "Brazil", "Jugoslavija", "Bolivia", "Uruguay", "Romania", "Peru", "USA", "Belgium", "Paraguay"],
+            "anecdote": "C'était la première coupe du monde jamais jouée."
+        },
+        {
+            "annee": "1934",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1938",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1950",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1954",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1958",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1962",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1966",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1970",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1974",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1978",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1982",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1986",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1990",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1994",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "1998",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2002",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2006",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2010",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2014",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2018",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        },
+        {
+            "annee": "2022",
+            "hote": "",
+            "podium": ["", "", ""],
+            "participants": [],
+            "anecdote": ""
+        }
+    ]
+}

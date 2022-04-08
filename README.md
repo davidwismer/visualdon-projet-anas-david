@@ -21,6 +21,10 @@ Références
 --------------------------------------------------------------------
 Ces données sont utilisées et générées par la Fifa ainsi que toutes les organisations de football. Ce sont des données utilisées de manière assez générale dans le monde du foot.
 
+https://github.com/risan/country-flag-emoji-json
+https://nbviewer.org/github/pratapvardhan/FIFAWorldCup/blob/master/fifa-wc-squads.ipynb?create=1
+https://www.kaggle.com/datasets/abecklas/fifa-world-cup
+https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson
 
 Wireframes
 --------------------------------------------------------------------
