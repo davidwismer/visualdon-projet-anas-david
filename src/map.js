@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 import dataCoord from './data/datacoord.geojson'
 import dataWorldCup from './data/dataWorldCup.json'
-import { placeBoutonsAnnees, deleteBoutonsAnnees } from './boutons'
+import { placeBoutonsAnnees } from './boutons'
 
 const worldCupData = dataWorldCup.WorldCups
 
@@ -54,7 +54,35 @@ function placeWorldMap(svg) {
                     let x, y, k, centroid = path.centroid(geometry);
                     x = centroid[0];
                     y = centroid[1];
-                    k = 5;
+                    switch (pays) {
+                        case 'Russia':
+                            k = 3;
+                            break;
+                        case 'Switzerland':
+                            k = 8;
+                            break;
+                        case 'South Korea':
+                            k = 8;
+                            break;
+                        case 'Uruguay':
+                            k = 8;
+                            break;
+                        case 'United States':
+                            k = 3;
+                            break;
+                        case 'Brazil':
+                            k = 4;
+                            break;
+                        case 'Chile':
+                            k = 4;
+                            break;
+                        case 'Argentina':
+                            k = 4;
+                            break;
+                        default:
+                            k = 5;
+                            break;
+                    }
                     centered = geometry;
                     svg.select('.map').selectAll("path")
                         .classed("active", centered && function (d) { return d === centered; });
@@ -80,11 +108,19 @@ function placeWorldMap(svg) {
             paysClicked = false
 
             //Changer la couleur des autres pays
-            paysAutre.forEach(pays => {
-                if (pays == 'South Africa') d3.select('.South.Africa').transition().duration(750).attr('fill', 'white')
-                if (pays == 'United States') d3.select('.United.States').transition().duration(750).attr('fill', 'white')
-                if (pays == 'South Korea') d3.select('.South.Korea').transition().duration(750).attr('fill', 'white')
-                d3.select('.' + pays).transition().duration(750).attr('fill', 'white')
+            //Cas japon korée (tous les deux doivent être rouge en meme temps)
+            if(pays == 'South Korea'){
+                let paysAutreFiltered = paysAutre.filter(function(value, index, arr){
+                    return value != 'Japan'
+                })
+                paysAutre = paysAutreFiltered
+            }
+            paysAutre.forEach(paysAutre => {
+                if (paysAutre == 'South Africa') d3.select('.South.Africa').transition().duration(750).attr('fill', 'white')
+                if (paysAutre == 'United States') d3.select('.United.States').transition().duration(750).attr('fill', 'white')
+                //Cas de la korée et du japon (les deux sont hôtes de la même coupe)
+                if (paysAutre == 'South Korea' && pays != 'Japan') d3.select('.South.Korea').transition().duration(750).attr('fill', 'white')
+                d3.select('.' + paysAutre).transition().duration(750).attr('fill', 'white')
             })
         })
 }

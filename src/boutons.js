@@ -1,6 +1,7 @@
 import * as d3 from 'd3'
 import { width, height } from './index'
 import dataWorldCup from './data/dataWorldCup.json'
+import { placeParticipants, deleteParticipants } from './blockData'
 
 const worldCupData = dataWorldCup.WorldCups
 
@@ -30,13 +31,16 @@ function placeBoutonRetour(svg) {
         function title() {
             d3.select('.title').transition().duration(750).style('opacity', 1)
         }
-        d3.timeout(title, 500)
+        d3.timeout(title, 400)
 
         //Faire disparaitre le bouton retour
         d3.select('.retour').style('opacity', 0)
 
         //Faire disparaitre les boutons années
         deleteBoutonsAnnees()
+
+        //Faire disparaitre les données de participants
+        deleteParticipants()
 
         //Remettre la couleur aux autres pays
         worldCupData.forEach(coupe => {
@@ -79,6 +83,9 @@ function placeBoutonsAnnees(svg, pays) {
         //Rectangle pour le ou les boutons
         d3.select('.annees').append('g').attr('class', 'boutonAnnee' + indexAnnee + ' boutonAnnee').attr('id', annee).attr('stroke', 'black').attr('transform', 'translate(' + (i * LARGEUR_BOUTON + (i * 10)) + ', 0)').append('rect').attr('class', 'anneeRect' + indexAnnee).attr('width', LARGEUR_BOUTON).attr('height', HAUTEUR_BOUTON).attr('fill', COULEUR_BOUTON)
 
+        //Le bouton de l'année pas sélectionné est plus transparent que l'autre
+        if (indexAnnee == 2) d3.select('.boutonAnnee2').style('opacity', 0.5)
+
         //Texte pour les boutons
         d3.select('.boutonAnnee' + indexAnnee).append('text').text(annee).attr('font-family', 'Helvetica').attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', d3.select('.anneeRect' + indexAnnee).attr('width') / 2).attr('y', d3.select('.anneeRect' + indexAnnee).attr('height') / 2)
             .style('fill', 'white').style('font-size', 25).style('stroke', 'white')
@@ -87,14 +94,23 @@ function placeBoutonsAnnees(svg, pays) {
         if (annees.length == 2) {
             d3.selectAll('.boutonAnnee').on('click', function (d) {
                 const anneeClickee = d.path[1].id
+                const classClickee = d.path[1].classList[0]
 
-                //Gérer l'opacité du bouton pas selectionné
+                //Faire apparaitre le rectangle avec les données des participants si click
+                if (d3.select('.' + classClickee).style('opacity') == 0.5) placeParticipants(svg, anneeClickee)
+
+                //Rendre l'opacité aux boutons
+                d3.selectAll('.boutonAnnee').style('opacity', 0.5)
+                d3.select('.' + classClickee).style('opacity', 1)
 
             })
         }
         i++
         indexAnnee++
     })
+
+    //Faire apparaitre les données des participants
+    placeParticipants(svg, annees[0])
 }
 
 //Fonction pour supprimer les boutons des années

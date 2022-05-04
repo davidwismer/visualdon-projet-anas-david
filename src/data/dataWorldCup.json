@@ -5,7 +5,7 @@
             "hote": "Uruguay",
             "podium": ["Uruguay", "Argentina", "United States"],
             "participants": ["Argentina", "France", "Mexico", "Chile", "Brazil", "Yugoslavia", "Bolivia", "Uruguay", "Romania", "Peru", "United States", "Belgium", "Paraguay"],
-            "anecdote": "C'était la première coupe du monde jamais jouée."
+            "anecdote": "C'était la toute première coupe du monde."
         },
         {
             "annee": "1934",
@@ -39,7 +39,7 @@
             "annee": "1958",
             "hote": "Sweden",
             "podium": ["Brazil", "Sweden", "France"],
-            "participants": ["Argentina","Brazil","Paraguay","Mexico","Austria","Czechoslovakia","England","France","Hungary","Northern Ireland","Scotland","Soviet Union","Sweden","Wales","West Germany","Yugoslavia"],
+            "participants": ["Argentina","Brazil","Paraguay","Mexico","Austria","Czechoslovakia","England","France","Hungary","Ireland","Scotland","Soviet Union","Sweden","Wales","West Germany","Yugoslavia"],
             "anecdote": ""
         },
         {
@@ -81,56 +81,56 @@
             "annee": "1982",
             "hote": "Spain",
             "podium": ["Italy", "West Germany", "Poland"],
-            "participants": ["Kuwait","Algeria","Cameroon","New Zealand","Honduras","El Salvador","Argentina","Brazil","Chile","Peru","Austria","Belgium","Czechoslovakia","England","France","Hungary","Italy","Northern Ireland","Poland","Scotland","Soviet Union","Spain","West Germany","Yugoslavia"],
+            "participants": ["Kuwait","Algeria","Cameroon","New Zealand","Honduras","El Salvador","Argentina","Brazil","Chile","Peru","Austria","Belgium","Czechoslovakia","England","France","Hungary","Italy","Ireland","Poland","Scotland","Soviet Union","Spain","West Germany","Yugoslavia"],
             "anecdote": ""
         },
         {
             "annee": "1986",
             "hote": "Mexico",
             "podium": ["Argentina", "West Germany", "France"],
-            "participants": ["Iraq","South Korea","Algeria","Morocco","Canada","Mexico","Argentina","Brazil","Paraguay","Uruguay","Belgium","Bulgaria","Denmark","England","France","Hungary","Italy","Northern Ireland","Poland","Portugal","Scotland","Soviet Union","Spain","West Germany"],
+            "participants": ["Iraq","South Korea","Algeria","Morocco","Canada","Mexico","Argentina","Brazil","Paraguay","Uruguay","Belgium","Bulgaria","Denmark","England","France","Hungary","Italy","Ireland","Poland","Portugal","Scotland","Soviet Union","Spain","West Germany"],
             "anecdote": ""
         },
         {
             "annee": "1990",
             "hote": "Italy",
-            "podium": ["West Germany", "Argentina", "Italy"],
-            "participants": ["South Korea","United Arab Emirates","Egypt","Cameroon","Costa Rica","United States","Argentina","Brazil","Colombia","Uruguay","Austria","Belgium","Czechoslovakia","England","Italy","Netherlands","Republic of Ireland","Romania","Scotland","Soviet Union","Spain","Sweden","West Germany","Yugoslavia"],
+            "podium": ["Germany", "Argentina", "Italy"],
+            "participants": ["South Korea","United Arab Emirates","Egypt","Cameroon","Costa Rica","United States","Argentina","Brazil","Colombia","Uruguay","Austria","Belgium","Czechoslovakia","England","Italy","Netherlands","Ireland","Romania","Scotland","Soviet Union","Spain","Sweden","Germany","Yugoslavia"],
             "anecdote": ""
         },
         {
             "annee": "1994",
             "hote": "United States",
             "podium": ["Brazil", "Italy", "Sweden"],
-            "participants": ["Saudi Arabia","South Korea","Cameroon","Morocco","Nigeria","Mexico","United States","Argentina","Brazil","Bolivia","Colombia","Belgium","Bulgaria","Germany","Greece","Italy","Netherlands","Norway","Republic of Ireland","Romania","Russia","Spain","Sweden","Switzerland"],
+            "participants": ["Saudi Arabia","South Korea","Cameroon","Morocco","Nigeria","Mexico","United States","Argentina","Brazil","Bolivia","Colombia","Belgium","Bulgaria","Germany","Greece","Italy","Netherlands","Norway","Ireland","Romania","Russia","Spain","Sweden","Switzerland"],
             "anecdote": ""
         },
         {
             "annee": "1998",
             "hote": "France",
             "podium": ["France", "Brazil", "Croatia"],
-            "participants": ["Iran","Japan","Saudi Arabia","South Korea","Cameroon","Morocco","Nigeria","South Africa","Tunisia","Jamaica","Mexico","United States","Argentina","Brazil","Chile","Colombia","Paraguay","Austria","Belgium","Bulgaria","Croatia","Denmark","England","France","Germany","Italy","Netherlands","Norway","Romania","Scotland","Spain","FR Yugoslavia"],
+            "participants": ["Iran","Japan","Saudi Arabia","South Korea","Cameroon","Morocco","Nigeria","South Africa","Tunisia","Jamaica","Mexico","United States","Argentina","Brazil","Chile","Colombia","Paraguay","Austria","Belgium","Bulgaria","Croatia","Denmark","England","France","Germany","Italy","Netherlands","Norway","Romania","Scotland","Spain","Yugoslavia"],
             "anecdote": ""
         },
         {
             "annee": "2002",
             "hote": "Japan",
             "podium": ["Brazil", "Germany", "Turkey"],
-            "participants": ["China PR","Japan","Saudi Arabia","South Korea","Cameroon","Nigeria","Senegal","South Africa","Tunisia","Costa Rica","Mexico","United States","Argentina","Brazil","Ecuador","Paraguay","Uruguay","Belgium","Croatia","Denmark","England","France","Germany","Italy","Poland","Portugal","Republic of Ireland","Russia","Slovenia","Spain","Sweden","Turkey"],
+            "participants": ["China","Japan","Saudi Arabia","South Korea","Cameroon","Nigeria","Senegal","South Africa","Tunisia","Costa Rica","Mexico","United States","Argentina","Brazil","Ecuador","Paraguay","Uruguay","Belgium","Croatia","Denmark","England","France","Germany","Italy","Poland","Portugal","Ireland","Russia","Slovenia","Spain","Sweden","Turkey"],
             "anecdote": ""
         },
         {
             "annee": "2002",
             "hote": "South Korea",
             "podium": ["Brazil", "Germany", "Turkey"],
-            "participants": ["China PR","Japan","Saudi Arabia","South Korea","Cameroon","Nigeria","Senegal","South Africa","Tunisia","Costa Rica","Mexico","United States","Argentina","Brazil","Ecuador","Paraguay","Uruguay","Belgium","Croatia","Denmark","England","France","Germany","Italy","Poland","Portugal","Republic of Ireland","Russia","Slovenia","Spain","Sweden","Turkey"],
+            "participants": ["China","Japan","Saudi Arabia","South Korea","Cameroon","Nigeria","Senegal","South Africa","Tunisia","Costa Rica","Mexico","United States","Argentina","Brazil","Ecuador","Paraguay","Uruguay","Belgium","Croatia","Denmark","England","France","Germany","Italy","Poland","Portugal","Ireland","Russia","Slovenia","Spain","Sweden","Turkey"],
             "anecdote": ""
         },
         {
             "annee": "2006",
             "hote": "Germany",
             "podium": ["Italy", "France", "Germany"],
-            "participants": ["Iran","Japan","Saudi Arabia","South Korea","Angola","Ghana","Ivory Coast","Togo","Tunisia","Costa Rica","Mexico","Trinidad and Tobago","United States","Argentina","Brazil","Ecuador","Paraguay","Australia","Croatia","Czech Republic","England","France","Germany","Italy","Netherlands","Poland","Portugal","FR Yugoslavia","Spain","Sweden","Switzerland","Ukraine"],
+            "participants": ["Iran","Japan","Saudi Arabia","South Korea","Angola","Ghana","Ivory Coast","Togo","Tunisia","Costa Rica","Mexico","Trinidad and Tobago","United States","Argentina","Brazil","Ecuador","Paraguay","Australia","Croatia","Czech Republic","England","France","Germany","Italy","Netherlands","Poland","Portugal","Yugoslavia","Spain","Sweden","Switzerland","Ukraine"],
             "anecdote": ""
         },
         {
