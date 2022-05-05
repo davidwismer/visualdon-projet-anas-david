@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import dataCoord from './data/datacoord.geojson'
 import dataWorldCup from './data/dataWorldCup.json'
 import { placeBoutonsAnnees, placeBoutonRetour } from './boutons'
-import { width, height, COULEUR_PAYS_HOTE, COULEUR_PAYS_NON_HOTE, POLICE, COULEUR_MER } from './index'
+import { COULEUR_PAYS_HOTE, COULEUR_PAYS_NON_HOTE, COULEUR_MER } from './index'
 
 const worldCupData = dataWorldCup.WorldCups
 

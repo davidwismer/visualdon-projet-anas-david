@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { width, height, COULEUR_PAYS_HOTE, COULEUR_PAYS_NON_HOTE, POLICE } from './index'
+import { width, height, COULEUR_PAYS_HOTE, POLICE } from './index'
 import dataWorldCup from './data/dataWorldCup.json'
 import { placeParticipants, deleteParticipants } from './blockData'
 
@@ -11,14 +11,17 @@ function placeBoutonRetour(svg) {
     const HAUTEUR_BOUTON = 40
     const COULEUR_BOUTON = 'black'
 
-    svg.append('g').attr('class', 'retour').attr('transform', 'translate(15,15)')
+    svg.append('g')
+        .attr('class', 'retour').attr('transform', 'translate(15,15)')
         .style('opacity', 0).transition().duration(750).style('opacity', '1').style('cursor', 'pointer')
     
     //Rectangle bouton retour
-    d3.select('.retour').append('rect').attr('class', 'retourRect').attr('width', LARGEUR_BOUTON).attr('height', HAUTEUR_BOUTON).attr('fill', COULEUR_BOUTON).attr('stroke', 'black').attr('rx', '20px').attr('ry', '20px')
+    d3.select('.retour').append('rect')
+        .attr('class', 'retourRect').attr('width', LARGEUR_BOUTON).attr('height', HAUTEUR_BOUTON).attr('fill', COULEUR_BOUTON).attr('stroke', 'black').attr('rx', '20px').attr('ry', '20px')
 
     //Text retour
-    d3.select('.retour').append('text').text('Retour').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', d3.select('.retourRect').attr('width') / 2).attr('y', d3.select('.retourRect').attr('height') / 2)
+    d3.select('.retour').append('text')
+        .text('Retour').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', d3.select('.retourRect').attr('width') / 2).attr('y', d3.select('.retourRect').attr('height') / 2)
         .style('fill', 'white').style('font-size', 25)
     
     //Click function to go back to full map    
@@ -69,7 +72,9 @@ function placeBoutonsAnnees(svg, pays) {
     })
 
     //Gérer le groupe avec le ou les boutons.
-    svg.append('g').attr('class', 'annees').attr('width', LARGEUR_BOUTON * annees.length).attr('height', HAUTEUR_BOUTON).attr('transform', 'translate(' + ((width / 2) - (LARGEUR_BOUTON / 2)) + ',' + (height - 15 - HAUTEUR_BOUTON) + ')')
+    svg.append('g')
+        .attr('class', 'annees').attr('width', LARGEUR_BOUTON * annees.length).attr('height', HAUTEUR_BOUTON)
+        .attr('transform', 'translate(' + ((width / 2) - (LARGEUR_BOUTON / 2)) + ',' + (height - 15 - HAUTEUR_BOUTON) + ')')
         .style('opacity', 0).transition().duration(750).style('opacity', 1)
 
     //Mettre les boutons dans le rectangle (i sert à la position des boutons)
@@ -85,13 +90,17 @@ function placeBoutonsAnnees(svg, pays) {
     }
     annees.forEach(annee => {
         //Rectangle pour le ou les boutons
-        d3.select('.annees').append('g').attr('class', 'boutonAnnee' + indexAnnee + ' boutonAnnee').attr('id', annee).attr('stroke', 'black').attr('transform', 'translate(' + (i * LARGEUR_BOUTON + (i * 10)) + ', 0)').append('rect').attr('class', 'anneeRect' + indexAnnee).attr('width', LARGEUR_BOUTON).attr('height', HAUTEUR_BOUTON).attr('fill', COULEUR_BOUTON).attr('rx', '20px').attr('ry', '20px')
+        d3.select('.annees').append('g')
+            .attr('class', 'boutonAnnee' + indexAnnee + ' boutonAnnee').attr('id', annee).attr('stroke', 'black')
+            .attr('transform', 'translate(' + (i * LARGEUR_BOUTON + (i * 10)) + ', 0)')
+            .append('rect').attr('class', 'anneeRect' + indexAnnee).attr('width', LARGEUR_BOUTON).attr('height', HAUTEUR_BOUTON).attr('fill', COULEUR_BOUTON).attr('rx', '20px').attr('ry', '20px')
 
         //Le bouton de l'année pas sélectionné est plus transparent que l'autre
         if (indexAnnee == 2) d3.select('.boutonAnnee2').style('opacity', 0.5)
 
         //Texte pour les boutons
-        d3.select('.boutonAnnee' + indexAnnee).append('text').text(annee).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', d3.select('.anneeRect' + indexAnnee).attr('width') / 2).attr('y', d3.select('.anneeRect' + indexAnnee).attr('height') / 2)
+        d3.select('.boutonAnnee' + indexAnnee).append('text')
+            .text(annee).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', d3.select('.anneeRect' + indexAnnee).attr('width') / 2).attr('y', d3.select('.anneeRect' + indexAnnee).attr('height') / 2)
             .style('fill', 'white').style('font-size', 25).style('stroke', 'white')
 
         //Gérer les cliques sur les boutons des années

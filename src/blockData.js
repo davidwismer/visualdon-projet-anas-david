@@ -1,5 +1,5 @@
 import * as d3 from 'd3'
-import { width, height, POLICE } from './index'
+import { width, height, POLICE, COULEUR_DATA } from './index'
 import dataWorldCup from './data/dataWorldCup.json'
 import emojis from './data/dataEmoji.json'
 
@@ -13,11 +13,11 @@ function placeParticipants(svg, annee) {
 
     const WIDTH_BACKGROUND = width / 4
     const HEIGHT_BACKGROUND = height - 125 //les boutons d'années font 40 de haut + une marge de 15 en bas -> donc on prend 55 en bas et en haut de marge plus une marge à 15 pour s'écarter du bouton retour
-    const COULEUR_BACKGROUND = '#FDFF8E'
     const MARGIN = 15
     const MARGIN_PARTICIPANTS = 30
     const POLICE_TITRE = 30
     const POLICE_SOUS_TITRE = 25
+    const LARGEUR_DRAPEAU = 50
 
     //Quel est le pays hote
     let pays = ''
@@ -28,36 +28,43 @@ function placeParticipants(svg, annee) {
 
     //Créer le groupe qui contient tout
     svg.append('g').attr('class', 'boxData')
-        .attr('transform', 'translate(' + (width -55 + 27.5 - WIDTH_BACKGROUND) + ',' + (height - HEIGHT_BACKGROUND - 55) + ')')
+        .attr('transform', 'translate(' + (width - 55 + 27.5 - WIDTH_BACKGROUND) + ',' + (height - HEIGHT_BACKGROUND - 55) + ')')
         .style('opacity', 0).transition().duration(750).style('opacity', 1)
     //Créer le rectangle de fond
-    d3.select('.boxData').append('rect').attr('class', 'backgroundData').attr('width', WIDTH_BACKGROUND).attr('height', HEIGHT_BACKGROUND)
-        .attr('rx', '30px').attr('ry', '30px')
-        .style('fill', COULEUR_BACKGROUND).style('opacity', 0.8)
+    d3.select('.boxData').append('rect')
+        .attr('class', 'backgroundData').attr('width', WIDTH_BACKGROUND).attr('height', HEIGHT_BACKGROUND)
+        .attr('rx', '30px').attr('ry', '30px') //Arrondi sur les coins
+        .style('fill', COULEUR_DATA).style('opacity', 0.8)
 
     //Créer le texte avec Pays et Année.
-    d3.select('.boxData').append('g').attr('class', 'paysAnnee').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', HEIGHT_BACKGROUND / 10)
+    d3.select('.boxData').append('g')
+        .attr('class', 'paysAnnee').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', HEIGHT_BACKGROUND / 10)
         .append('text').text(pays + ' - ' + annee).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle")
         .attr('x', (WIDTH_BACKGROUND) / 2).attr('y', (HEIGHT_BACKGROUND / 10) / 2)
         .style('font-size', POLICE_TITRE)
 
     //Créer le bloc avec le podium
-    d3.select('.boxData').append('g').attr('class', 'groupPodium').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', 20 / 100 * HEIGHT_BACKGROUND).attr('transform', 'translate(' + MARGIN + ',' + d3.select('.paysAnnee').attr('height') + ')')
+    d3.select('.boxData').append('g')
+        .attr('class', 'groupPodium').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', 20 / 100 * HEIGHT_BACKGROUND)
+        .attr('transform', 'translate(' + MARGIN + ',' + d3.select('.paysAnnee').attr('height') + ')')
         .append('text').text('Podium').attr('font-family', POLICE).attr('dominant-baseline', "hanging")
         .style('font-size', POLICE_SOUS_TITRE)
     //Créer le podium
     d3.select('.groupPodium').append('g').attr('class', 'podium')
     const podium = d3.select('.podium')
-    podium.append('g').attr('class', 'premier').attr('transform', 'translate(50,0)').append('rect').attr('width', 50).attr('height', 80).style('fill', 'white')
-    podium.append('g').attr('class', 'troisieme').attr('transform', 'translate(100,40)').append('rect').attr('width', 50).attr('height', 40).style('fill', 'white')
-    podium.append('g').attr('class', 'second').attr('transform', 'translate(0,20)').append('rect').attr('width', 50).attr('height', 60).style('fill', 'white')
+    podium.append('g').attr('class', 'premier').attr('transform', 'translate(50,0)')
+        .append('rect').attr('width', 50).attr('height', 80).style('fill', 'white')
+    podium.append('g').attr('class', 'troisieme').attr('transform', 'translate(100,40)')
+        .append('rect').attr('width', 50).attr('height', 40).style('fill', 'white')
+    podium.append('g').attr('class', 'second').attr('transform', 'translate(0,20)')
+        .append('rect').attr('width', 50).attr('height', 60).style('fill', 'white')
     podium.attr('transform', 'translate(' + (d3.select('.groupPodium').attr('width') / 2 - 75) + ',' + (d3.select('.groupPodium').attr('height') - MARGIN - 80) + ')')
     //Trouver les liens des drapeaux
     let gagnants = []
     worldCupData.forEach(coupe => {
         if (coupe.annee == annee) gagnants = coupe.podium
     })
-    //Gérer les id pour les pays à nom composé
+    //Gérer les ids pour les pays à nom composé
     let gagnantsSplit = []
     for (let i = 0; i < gagnants.length; i++) {
         if (gagnants[i].split(' ').length > 1) {
@@ -79,25 +86,36 @@ function placeParticipants(svg, annee) {
         })
     })
     //Ajouter le texte dans le podium
-    d3.select('.premier').append('text').text('1e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
+    d3.select('.premier').append('text')
+        .text('1e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
         .attr('transform', 'translate(25,10)')
-    d3.select('.second').append('text').text('2e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
+    d3.select('.second').append('text')
+        .text('2e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
         .attr('transform', 'translate(25,10)')
-    d3.select('.troisieme').append('text').text('3e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
+    d3.select('.troisieme').append('text')
+        .text('3e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
         .attr('transform', 'translate(25,10)')
     //Ajouter les Drapeaux au podium
-    d3.select('.premier').append('image').attr('id', gagnantsSplit[0]).attr('class', gagnants[0]).attr('xlink:href', lienEmojis[0]).attr('width', 40).attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
-    d3.select('.second').append('image').attr('id', gagnantsSplit[1]).attr('class', gagnants[1]).attr('xlink:href', lienEmojis[1]).attr('width', 40).attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
-    d3.select('.troisieme').append('image').attr('id', gagnantsSplit[2]).attr('class', gagnants[2]).attr('xlink:href', lienEmojis[2]).attr('width', 40).attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
+    d3.select('.premier').append('image')
+        .attr('id', gagnantsSplit[0]).attr('class', gagnants[0]).attr('xlink:href', lienEmojis[0]).attr('width', 40)
+        .attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
+    d3.select('.second').append('image')
+        .attr('id', gagnantsSplit[1]).attr('class', gagnants[1]).attr('xlink:href', lienEmojis[1]).attr('width', 40)
+        .attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
+    d3.select('.troisieme').append('image')
+        .attr('id', gagnantsSplit[2]).attr('class', gagnants[2]).attr('xlink:href', lienEmojis[2]).attr('width', 40)
+        .attr('transform', 'translate(' + 5 + ',' + (-50) + ')')
 
     //Créer le bloc des participants
     let yGroupParticipants = parseFloat(d3.select('.paysAnnee').attr('height')) + parseFloat(d3.select('.groupPodium').attr('height'))
-    d3.select('.boxData').append('g').attr('class', 'groupParticipants').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', 60 / 100 * HEIGHT_BACKGROUND).attr('transform', 'translate(' + MARGIN + ',' + (yGroupParticipants + MARGIN) + ')')
+    d3.select('.boxData').append('g')
+        .attr('class', 'groupParticipants').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN).attr('height', 60 / 100 * HEIGHT_BACKGROUND)
+        .attr('transform', 'translate(' + MARGIN + ',' + (yGroupParticipants + MARGIN) + ')')
         .append('text').text('Participants').attr('font-family', POLICE).attr('dominant-baseline', "hanging")
         .style('font-size', POLICE_SOUS_TITRE)
-    const LARGEUR_DRAPEAU = 50
     //Création d'un groupe qui accueillera les drapeaux
-    d3.select('.groupParticipants').append('g').attr('class', 'participants').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN - MARGIN_PARTICIPANTS - MARGIN_PARTICIPANTS).attr('height', 60 / 100 * HEIGHT_BACKGROUND - MARGIN_PARTICIPANTS - MARGIN_PARTICIPANTS)
+    d3.select('.groupParticipants').append('g')
+        .attr('class', 'participants').attr('width', WIDTH_BACKGROUND - MARGIN - MARGIN - MARGIN_PARTICIPANTS - MARGIN_PARTICIPANTS).attr('height', 60 / 100 * HEIGHT_BACKGROUND - MARGIN_PARTICIPANTS - MARGIN_PARTICIPANTS)
     d3.select('.participants').attr('transform', 'translate(' + ((d3.select('.groupParticipants').attr('width') / 2) - (2 * LARGEUR_DRAPEAU) - (1.5 * MARGIN_PARTICIPANTS)) + ',' + (MARGIN_PARTICIPANTS) + ')')
     //Quels emojis utiliser
     let emojiParticipants = []
@@ -125,9 +143,10 @@ function placeParticipants(svg, annee) {
         }
         let positionX = indexColonne * (LARGEUR_DRAPEAU + MARGIN_PARTICIPANTS)
         let positionY = indexLigne * (LARGEUR_DRAPEAU)
-        //Gérer les cas des drapeaux différents des autres
+        //Gérer les cas des drapeaux différents des autres (Pas la même source)
         if (idPays == 'Zaire' || idPays == 'Yugoslavia' || idPays == 'SovietUnion' || idPays == 'NaziGermany' || idPays == 'EastGermany' || idPays == 'NorthernIreland' || idPays == 'RepublicofIreland') positionY += 12
-        d3.select('.participants').append('image').attr('id', idPays).attr('class', participants[pays - 1]).attr('xlink:href', emojiParticipants[pays - 1]).attr('width', LARGEUR_DRAPEAU)
+        d3.select('.participants').append('image')
+            .attr('id', idPays).attr('class', participants[pays - 1]).attr('xlink:href', emojiParticipants[pays - 1]).attr('width', LARGEUR_DRAPEAU)
             .attr('transform', 'translate(' + positionX + ',' + positionY + ')')
         indexColonne++
         if (pays % 4 == 0 && pays != 0) indexLigne++, indexColonne = 0
@@ -144,15 +163,17 @@ function placeParticipants(svg, annee) {
     worldCupData.forEach(coupe => {
         if (coupe.annee == annee) anecdote = coupe.anecdote
     })
-    d3.select('svg').append('g').attr('class', 'anecdote').attr('transform', 'translate(' + POSITION_X_ANECDOTE + ',' + POSITION_Y_ANECDOTE + ')')
+    d3.select('svg').append('g')
+        .attr('class', 'anecdote').attr('transform', 'translate(' + POSITION_X_ANECDOTE + ',' + POSITION_Y_ANECDOTE + ')')
         .style('opacity', 0).transition().duration(750).style('opacity', 1)
-    d3.select('.anecdote').append('foreignObject').attr('width', WIDTH_ANECDOTE).attr('height', HEIGHT_ANECDOTE)
+    d3.select('.anecdote').append('foreignObject')
+        .attr('width', WIDTH_ANECDOTE).attr('height', HEIGHT_ANECDOTE)
         .append('xhtml')
-        .append('div').style('width', WIDTH_ANECDOTE+'px').style('height', HEIGHT_ANECDOTE+'px').style('display', 'flex').style('flex-direction', 'column').style('justify-content', 'flex-end')
+        .append('div').style('width', WIDTH_ANECDOTE + 'px').style('height', HEIGHT_ANECDOTE + 'px').style('display', 'flex').style('flex-direction', 'column').style('justify-content', 'flex-end')
         .append('p').attr('class', 'paragraphe')
         .text(anecdote)
         .style('font-size', 20).style('font-family', POLICE).style('margin', 0).style('padding', '1em').style('text-align', 'justify')
-        .style('background-color', COULEUR_BACKGROUND).style('opacity', 0.8).style('border-radius', '30px')
+        .style('background-color', COULEUR_DATA).style('opacity', 0.8).style('border-radius', '30px')
 
     //Appel de la fonction pour hover la souris sur les pays
     showCountryName()
@@ -176,11 +197,13 @@ function showCountryName() {
         if (countryName == 'Zaire' || countryName == 'Yugoslavia' || countryName == 'SovietUnion' || countryName == 'NaziGermany' || countryName == 'EastGermany' || countryName == 'NorthernIreland' || countryName == 'RepublicofIreland') positionY -= 12
 
         //Definir la bulle avec le nom
-        let bulle = d3.select('.' + d.path[1].classList[0]).append('g').attr('class', 'groupBubble').attr('transform', 'translate(' + positionX + ',' + positionY + ')')
+        let bulle = d3.select('.' + d.path[1].classList[0]).append('g')
+            .attr('class', 'groupBubble').attr('transform', 'translate(' + positionX + ',' + positionY + ')')
             .append('rect').attr('class', 'bubble').attr('width', WIDTH).attr('height', HEIGHT)
             .style('fill', 'lightbluesteel').style('opacity', 0.8)
         //Text dans la bulle
-        d3.select('.groupBubble').append('text').text(d.path[0].className.animVal).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', bulle.attr('width') / 2).attr('y', bulle.attr('height') / 2)
+        d3.select('.groupBubble').append('text')
+            .text(d.path[0].className.animVal).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', bulle.attr('width') / 2).attr('y', bulle.attr('height') / 2)
             .style('font-size', 15).style('fill', 'white')
     })
 
