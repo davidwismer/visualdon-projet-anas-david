@@ -336,7 +336,7 @@
     "image": "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CM.svg"
   },
   {
-    "name": "China",
+    "name": "China PR",
     "code": "CN",
     "emoji": "🇨🇳",
     "unicode": "U+1F1E8 U+1F1F3",
@@ -1844,7 +1844,7 @@
   {
     "name": "Nazi Germany",
     "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
-    "image": ""
+    "image": "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Germany_%281935%E2%80%931945%29.svg"
   },
   {
     "name": "Zaire",
@@ -1865,5 +1865,15 @@
     "name": "Czechoslovakia",
     "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
     "image": "https://cdn.jsdelivr.net/npm/country-flag-emoji-json@2.0.0/dist/images/CZ.svg"
+  },
+  {
+    "name": "Northern Ireland",
+    "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Flag_of_Northern_Ireland_%281953%E2%80%931972%29.svg"
+  },
+  {
+    "name": "Republic of Ireland",
+    "emoji": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Flag_of_Northern_Ireland_%281953%E2%80%931972%29.svg"
   }
 ]

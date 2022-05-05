@@ -1,7 +1,8 @@
 import * as d3 from 'd3'
 import dataCoord from './data/datacoord.geojson'
 import dataWorldCup from './data/dataWorldCup.json'
-import { placeBoutonsAnnees } from './boutons'
+import { placeBoutonsAnnees, placeBoutonRetour } from './boutons'
+import { width, height, COULEUR_PAYS_HOTE, COULEUR_PAYS_NON_HOTE, POLICE, COULEUR_MER } from './index'
 
 const worldCupData = dataWorldCup.WorldCups
 
@@ -29,12 +30,12 @@ function placeWorldMap(svg) {
             worldCupData.forEach(coupe => {
                 if (d.properties.name == coupe.hote) paysHote = true
             });
-            if (paysHote) return 'red'
-            else return 'white'
+            if (paysHote) return COULEUR_PAYS_HOTE
+            else return COULEUR_PAYS_NON_HOTE
         })
         .attr("d", path)
         .attr('class', function (d) { return d.properties.name })
-        .style("stroke", "black")
+        .style("stroke", COULEUR_MER)
         .on('click', function (d) {
             //Click function pour gérer le zoom+
             const pays = d.path[0].__data__.properties.name
@@ -44,7 +45,7 @@ function placeWorldMap(svg) {
 
             //Agit seulement si le nom du pays est dans la liste des hôtes de coupes du monde
             worldCupData.forEach(coupe => {
-                if (!paysClicked && pays == coupe.hote && d3.select('.retour').attr('style') == 'opacity: 0;') {
+                if (!paysClicked && pays == coupe.hote && d3.select('.retour')._groups[0][0] == null) {
                     paysClicked = true
 
                     //Gérer Titre disparition
@@ -59,7 +60,7 @@ function placeWorldMap(svg) {
                             k = 3;
                             break;
                         case 'Switzerland':
-                            k = 8;
+                            k = 10;
                             break;
                         case 'South Korea':
                             k = 8;
@@ -98,8 +99,8 @@ function placeWorldMap(svg) {
                         }
                     })
 
-                    //Faire apparaitre le bouton retour
-                    d3.select('.retour').transition().duration(750).style('opacity', '1')
+                    //Faire disparaitre
+                    placeBoutonRetour(svg)
 
                     //Faire apparaitre les boutons pour les années
                     placeBoutonsAnnees(svg, pays)
@@ -109,18 +110,18 @@ function placeWorldMap(svg) {
 
             //Changer la couleur des autres pays
             //Cas japon korée (tous les deux doivent être rouge en meme temps)
-            if(pays == 'South Korea'){
-                let paysAutreFiltered = paysAutre.filter(function(value, index, arr){
+            if (pays == 'South Korea') {
+                let paysAutreFiltered = paysAutre.filter(function (value, index, arr) {
                     return value != 'Japan'
                 })
                 paysAutre = paysAutreFiltered
             }
             paysAutre.forEach(paysAutre => {
-                if (paysAutre == 'South Africa') d3.select('.South.Africa').transition().duration(750).attr('fill', 'white')
-                if (paysAutre == 'United States') d3.select('.United.States').transition().duration(750).attr('fill', 'white')
+                if (paysAutre == 'South Africa') d3.select('.South.Africa').transition().duration(750).attr('fill', COULEUR_PAYS_NON_HOTE)
+                if (paysAutre == 'United States') d3.select('.United.States').transition().duration(750).attr('fill', COULEUR_PAYS_NON_HOTE)
                 //Cas de la korée et du japon (les deux sont hôtes de la même coupe)
-                if (paysAutre == 'South Korea' && pays != 'Japan') d3.select('.South.Korea').transition().duration(750).attr('fill', 'white')
-                d3.select('.' + paysAutre).transition().duration(750).attr('fill', 'white')
+                if (paysAutre == 'South Korea' && pays != 'Japan') d3.select('.South.Korea').transition().duration(750).attr('fill', COULEUR_PAYS_NON_HOTE)
+                d3.select('.' + paysAutre).transition().duration(750).attr('fill', COULEUR_PAYS_NON_HOTE)
             })
         })
 }
