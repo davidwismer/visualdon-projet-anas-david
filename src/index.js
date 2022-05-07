@@ -18,7 +18,7 @@ const svg = d3.select('body').append('svg')
     .style('position', 'fixed').style('top', 0).style('bottom', 0).style('background-color', COULEUR_MER)
 //Titre
 svg.append('text')
-    .attr('class', 'title').text('Pays hôtes des coupes du monde de la FIFA').attr('font-family', 'Helvetica').attr('style', 'font-size:50').attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', '50%').attr('y', 50)
+    .attr('class', 'title').text('Pays hôtes des coupes du monde de football').attr('font-family', 'Helvetica').attr('style', 'font-size:50').attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', '50%').attr('y', 50)
 //Place Map
 placeWorldMap(svg)
 //Curseur qui ne change pas

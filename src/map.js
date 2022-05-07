@@ -99,7 +99,7 @@ function placeWorldMap(svg) {
                         }
                     })
 
-                    //Faire disparaitre
+                    //Faire Apparaitre le bouton retour
                     placeBoutonRetour(svg)
 
                     //Faire apparaitre les boutons pour les années

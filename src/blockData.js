@@ -86,9 +86,12 @@ function placeParticipants(svg, annee) {
         })
     })
     //Ajouter le texte dans le podium
-    d3.select('.premier').append('text')
-        .text('1e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
-        .attr('transform', 'translate(25,10)')
+    //Si l'annee est avant 70, afficher l'ancienne coupe
+    let lienCoupe = 'https://upload.wikimedia.org/wikipedia/en/4/4e/Football_World_Cup_%28old%29.svg'
+    if (annee > 1970) lienCoupe = 'https://upload.wikimedia.org/wikipedia/commons/b/ba/FIFA_World_Cup_Icon_%28Campionato_mondiale_di_calcio%29.svg'
+    d3.select('.premier').append('image')
+        .attr('xxlink:href', lienCoupe).attr('height', 70)
+        .attr('transform', 'translate(10,5)')
     d3.select('.second').append('text')
         .text('2e').attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "hanging")
         .attr('transform', 'translate(25,10)')
@@ -163,17 +166,28 @@ function placeParticipants(svg, annee) {
     worldCupData.forEach(coupe => {
         if (coupe.annee == annee) anecdote = coupe.anecdote
     })
+    //Créer le groupe qui accueille les anecdotes
     d3.select('svg').append('g')
         .attr('class', 'anecdote').attr('transform', 'translate(' + POSITION_X_ANECDOTE + ',' + POSITION_Y_ANECDOTE + ')')
         .style('opacity', 0).transition().duration(750).style('opacity', 1)
+
+    //On met un foreignObject dans le groupe (Pour mettre de l'html dans le svg)
     d3.select('.anecdote').append('foreignObject')
         .attr('width', WIDTH_ANECDOTE).attr('height', HEIGHT_ANECDOTE)
         .append('xhtml')
-        .append('div').style('width', WIDTH_ANECDOTE + 'px').style('height', HEIGHT_ANECDOTE + 'px').style('display', 'flex').style('flex-direction', 'column').style('justify-content', 'flex-end')
-        .append('p').attr('class', 'paragraphe')
-        .text(anecdote)
-        .style('font-size', 20).style('font-family', POLICE).style('margin', 0).style('padding', '1em').style('text-align', 'justify')
+        .append('div').attr('class', 'container').style('width', WIDTH_ANECDOTE + 'px').style('height', HEIGHT_ANECDOTE + 'px').style('display', 'flex').style('flex-direction', 'column').style('justify-content', 'flex-end')
+    d3.select('.container').append('div').attr('class', 'background')
         .style('background-color', COULEUR_DATA).style('opacity', 0.8).style('border-radius', '30px')
+    //Gérer l'image pour les anecdotes
+    let lienImage = ''
+    worldCupData.forEach(coupe => {
+        if (coupe.annee == annee) lienImage = coupe.image
+    })
+    d3.select('.background').append('img').attr('src', lienImage)
+        .attr('width', WIDTH_ANECDOTE).attr('height', WIDTH_ANECDOTE).style('border-radius', '30px 30px 0px 0px')
+    d3.select('.background').append('p').attr('class', 'paragraphe')
+        .text(anecdote)
+        .style('font-size', 20).style('font-family', POLICE).style('margin', 0).style('padding', '2em').style('text-align', 'justify')
 
     //Appel de la fonction pour hover la souris sur les pays
     showCountryName()
@@ -200,7 +214,7 @@ function showCountryName() {
         let bulle = d3.select('.' + d.path[1].classList[0]).append('g')
             .attr('class', 'groupBubble').attr('transform', 'translate(' + positionX + ',' + positionY + ')')
             .append('rect').attr('class', 'bubble').attr('width', WIDTH).attr('height', HEIGHT)
-            .style('fill', 'lightbluesteel').style('opacity', 0.8)
+            .style('fill', 'lightbluesteel').style('opacity', 0.8).attr('rx', '5px').attr('ry', '5px')
         //Text dans la bulle
         d3.select('.groupBubble').append('text')
             .text(d.path[0].className.animVal).attr('font-family', POLICE).attr('text-anchor', 'middle').attr('dominant-baseline', "middle").attr('x', bulle.attr('width') / 2).attr('y', bulle.attr('height') / 2)
