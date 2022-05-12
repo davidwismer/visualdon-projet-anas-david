@@ -40,6 +40,12 @@ function placeBoutonRetour(svg) {
         }
         d3.timeout(title, 400)
 
+        //Put info back
+        function info() {
+            d3.select('.info').transition().duration(750).style('opacity', 1)
+        }
+        d3.timeout(info, 400)
+
         //Faire disparaitre le bouton retour
         deleteRetour()
 

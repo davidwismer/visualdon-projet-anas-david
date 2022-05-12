@@ -51,6 +51,9 @@ function placeWorldMap(svg) {
                     //Gérer Titre disparition
                     d3.select('.title').style('opacity', 0)
 
+                    //Gérer Info disparition
+                    d3.select('.info').style('opacity', 0)
+
                     //Zoom sur le pays cliqué
                     let x, y, k, centroid = path.centroid(geometry);
                     x = centroid[0];
