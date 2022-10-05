@@ -1,4 +1,6 @@
 # visualdon-projet-anas-david
+Application de visualisation de données sur le thème des coupes du monde de football.
+
 Contexte
 --------------------------------------------------------------------
 Projet de visualisation de données autour du thème des coupes du monde de football.
